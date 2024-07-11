@@ -1,0 +1,33 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+}
+input[type="text"] {
+  /*border: solid 1px var(--primary-color);*/
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 30%;
+}
+button {
+  padding: 10px;
+  /*border: solid 1px var(--primary-color);
+  background: var(--primary-color);*/
+  color: white;
+  background-color: cornflowerblue;
+  border-radius: 8px;
+}
+a{
+  margin-inline-end: 2em;
+}

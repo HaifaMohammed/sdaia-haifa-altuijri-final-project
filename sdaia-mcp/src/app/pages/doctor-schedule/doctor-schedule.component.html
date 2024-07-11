@@ -1,0 +1,43 @@
+<header>
+  <img src="assets/download.jpg" width="180" height="110">
+
+  <nav>
+    <a routerLink="/doctor-schedule">Schedules</a>
+    <a routerLink="/doctor-consults">Consults</a>
+  </nav>
+</header>
+
+<h4>Doctor Schedual</h4>
+
+<div class="add-schedule-form">
+  <h6>Add New Schedule</h6>
+  <form #scheduleForm="ngForm" (ngSubmit)="onSubmit(scheduleForm)">
+    <div>
+      <label for="startTime">Start Time:</label>
+      <input type="time" id="startTime" name="startTime" ngModel required>
+    </div>
+    <div>
+      <label for="endTime">End Time:</label>
+      <input type="time" id="endTime" name="endTime" ngModel required>
+    </div>
+    <button type="submit">Add Schedule</button>
+  </form>
+</div>
+<br><br>
+
+<div class="consult-list">
+  <h6>Schedules</h6>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>start tim</th>
+      <th>end time</th>
+    </tr>
+    <tr *ngFor="let schedule of data">
+      <td>{{ schedule.SCHEDUL_ID }}</td>
+      <td>{{ schedule.SCHEDUL_start_time }}</td>
+      <td>{{ schedule.SCHEDUL_end_time }}</td>
+      <td><button type="button" (click)="openUpdateScheduleDialog(schedule.SCHEDUL_ID, schedule.SCHEDUL_start_time, schedule.SCHEDUL_end_time)">Update</button></td>
+    </tr>
+  </table>
+</div>

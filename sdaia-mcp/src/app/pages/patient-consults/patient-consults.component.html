@@ -1,0 +1,29 @@
+
+<header>
+  <img src="assets/download.jpg" width="180" height="110">
+
+  <nav>
+    <a routerLink="/patient-new-requst">NewRequest</a>
+    <a routerLink="/patient-consults">Consults</a>
+  </nav>
+</header>
+
+<br><br><br>
+
+<div>
+  <h3>Your Consults</h3>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>doctor name</th>
+      <th>doctor specialty</th>
+      <th>consulting status</th>
+    </tr>
+    <tr *ngFor="let consult of data">
+      <td>{{ consult.doctorConsultsDTO.doctor_ID }}</td>
+      <td>{{ consult.doctorConsultsDTO.doctor_first_name + " " + consult.doctorConsultsDTO.doctor_last_name}}</td>
+      <td>{{ consult.doctorConsultsDTO.doctor_specialty }}</td>
+      <td>{{ consult.consulting_status }}</td>
+    </tr>
+  </table>
+</div>

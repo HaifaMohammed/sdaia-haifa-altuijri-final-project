@@ -1,0 +1,38 @@
+<header>
+  <img src="assets/download.jpg" width="180" height="110">
+
+  <nav>
+    <a routerLink="/patient-new-requst">New Request</a>
+    <a routerLink="/patient-consults">Consults</a>
+  </nav>
+</header>
+
+<br><br><br>
+
+<section>
+  <form>
+    <label for="filterInput"></label>
+    <input type="text" id="filterInput" name="filterInput" [(ngModel)]="search" (input)="filterall()" placeholder="Enter Doctor ID, Name, or Specialty" />
+    <button class="primary" (click)="filterall()" type="button">Search</button>
+  </form>
+</section>
+<br><br>
+<div *ngIf="filteredData.length > 0">
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Specialty</th>
+      <th>Action</th>
+    </tr>
+    <tr *ngFor="let doctor of filteredData">
+      <td>{{ doctor.doctor_ID }}</td>
+      <td>{{ doctor.doctor_first_name + ' ' + doctor.doctor_last_name }}</td>
+      <td>{{ doctor.doctor_specialty }}</td>
+      <td><a [routerLink]="['/patient-consults', doctor.doctor_ID]" (click)="addConsults(doctor.doctor_ID)">Request a new consult</a></td>
+    </tr>
+  </table>
+</div>
+
+<div *ngIf="filteredData.length === 0">No data found</div>
+<br><br><br>

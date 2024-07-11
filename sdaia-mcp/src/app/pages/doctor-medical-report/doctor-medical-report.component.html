@@ -1,0 +1,96 @@
+<header>
+  <img src="assets/download.jpg" width="180" height="110">
+
+  <nav>
+    <a routerLink="/doctor-schedule">Schedules</a>
+    <a routerLink="/doctor-consults">Consults</a>
+  </nav>
+</header>
+
+  <h2>Patient MR</h2>
+
+  <div>
+    <h3>Patient Details</h3>
+    <table title="Patient details">
+      <tr>
+        <th>Patient ID</th>
+        <th>Patient Name</th>
+        <th>Phone</th>
+        <th>Date of Birth</th>
+        <th>Gender</th>
+        <th>Weight</th>
+      </tr>
+      <tr *ngIf="datap">
+        <td>{{ datap.patient_ID }}</td>
+        <td>{{ datap.patient_first_name + ' ' + datap.patient_last_name }}</td>
+        <td>{{ datap.patient_phone }}</td>
+        <td>{{ datap.patient_Date_of_birth | date:'medium'}}</td>
+        <td>{{ datap.patient_Gender }}</td>
+        <td>{{ datap.patient_weight }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <br><br><br><br>
+
+  <div>
+    <h3>Medical Reports</h3>
+    <table title="Patient's medical Reports">
+      <tr>
+        <th>Medical Report ID</th>
+        <th>Medical Report Date</th>
+        <th>Diagnose</th>
+        <th>Treatment</th>
+      </tr>
+      <tr *ngFor="let mr of data">
+        <td>{{ mr.medical_Report_ID }}</td>
+        <td>{{ mr.medical_Report_Date }}</td>
+        <td>{{ mr.diagnose }}</td>
+        <td>{{ mr.treatment }}</td>
+      </tr>
+    </table>
+  </div>
+
+  <br><br><br><br>
+
+<section>
+  <form (ngSubmit)="addMedicalReport()" #mrForm="ngForm">
+    <label for="diagnose">Diagnose:</label>
+    <input type="text" id="diagnose" name="diagnose" [(ngModel)]="newDiagnose" required>
+    <br>
+    <label for="treatment">Treatment:</label>
+    <input type="text" id="treatment" name="treatment" [(ngModel)]="newTreatment" required>
+    <br>
+    <button type="submit">Add Medical Report</button>
+  </form>
+</section>
+
+<br><br><br><br>
+
+<section>
+  <form>
+    <label for="mrId"></label>
+    <input type="text" id="mrId" name="mrId" [(ngModel)]="mrId"  placeholder="Enter Medical report id" />
+    <button class="primary" (click)="fetchMR()"  type="button">Search</button>
+  </form>
+</section>
+
+  <div>
+    <table border="1" *ngIf="dataMR">
+      <tr>
+        <th>Medical Report ID</th>
+        <th>Medical Report Date</th>
+        <th>Diagnose</th>
+        <th>Treatment</th>
+      </tr>
+      <tr *ngIf="dataMR">
+        <td>{{ dataMR.medical_Report_ID }}</td>
+        <td>{{ dataMR.medical_Report_Date }}</td>
+        <td>{{ dataMR.diagnose }}</td>
+        <td>{{ dataMR.treatment }}</td>
+      </tr>
+    </table>
+  </div>
+
+<br><br><br>
+<br><br><br>

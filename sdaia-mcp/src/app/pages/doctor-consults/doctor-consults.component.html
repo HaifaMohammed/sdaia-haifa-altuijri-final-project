@@ -1,0 +1,28 @@
+
+<header>
+  <img src="assets/download.jpg" width="180" height="110">
+
+  <nav>
+    <a routerLink="/doctor-schedule">Schedules</a>
+    <a routerLink="/doctor-consults">Consults</a>
+  </nav>
+</header>
+
+<div class="consult-list">
+  <h3>Your Consults</h3>
+  <table>
+    <tr>
+      <th>id</th>
+      <th>patient_name</th>
+      <th>patient_phone</th>
+      <th>consultation_request_time</th>
+    </tr>
+    <tr *ngFor="let consult of data">
+      <td>{{ consult.patientConsultsDTO.patient_ID }}</td>
+      <td>{{ consult.patientConsultsDTO.patient_first_name + " " + consult.patientConsultsDTO.patient_last_name}}</td>
+      <td>{{ consult.patientConsultsDTO.patient_phone }}</td>
+      <td>{{ consult.consultation_request_time | date:'medium' }}</td>
+      <td><a [routerLink]="['/doctor-medical-report', consult.patientConsultsDTO.patient_ID]">Select</a></td>
+    </tr>
+  </table>
+</div>
